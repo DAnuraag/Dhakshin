@@ -1,5 +1,29 @@
+<div align="center">
 
-# Dhakshin
+# 🌊 DHAKSHIN
+
+### दक्षिण · A Cooperative Autonomous Observation System for the Southern Ocean
+
+**A wave-powered Wave Glider and a deep-diving Argo Float that find each other across a
+million square kilometres of ice-filled ocean — using machine-learning trajectory prediction,
+zero fuel, and zero ship time on station.**
+
+[![Version](.../version-v1.0.0--draft-0A2A43?style=for-the-badge)](#1-executive-summary)
+[![Status](.../status-Design%20Proposal-FF9F1C?style=for-the-badge)](#16-phased-development-roadmap)
+[![Programme](.../programme-NCPOR%20%C2%B7%20India-1B998B?style=for-the-badge)](#210-programme-context-within-ncpor)
+[![License](.../license-Internal%20(NCPOR)-6C757D?style=for-the-badge)](#203-license-and-distribution)
+[![Docs](.../docs-21%20Sections%20%C2%B7%2021%20Appendices-2EC4B6?style=for-the-badge)](#table-of-contents)
+
+![Python] ![PyTorch] ![FastAPI] ![PostgreSQL] ![React] ![TypeScript] ![Rust]
+![C / FreeRTOS] ![MQTT] ![Docker] ![GitHub Actions] ![100% Wave + Solar] ![PRs welcome]
+
+| 🛰️ Vehicles | 🔄 Mission Cycle | 🌡️ Max Depth | 📈 Profiles / yr | ⛽ Fuel | 🚢 Ship Visits |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| **2** | **~10 days** | **~2,000 m** | **30–35** | **0 L** | **~1 / yr** |
+
+[📖 Documentation]  [🚀 Getting Started]  [🗺️ Roadmap]  [🧠 ML Models]  [🤝 Contributing]
+
+</div>
 
 
 ## Table of Contents
