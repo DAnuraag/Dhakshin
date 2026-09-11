@@ -1,27 +1,47 @@
 <div align="center">
 
 # 🌊 DHAKSHIN
-
 ### दक्षिण · A Cooperative Autonomous Observation System for the Southern Ocean
 
 **A wave-powered Wave Glider and a deep-diving Argo Float that find each other across a
 million square kilometres of ice-filled ocean — using machine-learning trajectory prediction,
 zero fuel, and zero ship time on station.**
 
-[![Version](.../version-v1.0.0--draft-0A2A43?style=for-the-badge)](#1-executive-summary)
-[![Status](.../status-Design%20Proposal-FF9F1C?style=for-the-badge)](#16-phased-development-roadmap)
-[![Programme](.../programme-NCPOR%20%C2%B7%20India-1B998B?style=for-the-badge)](#210-programme-context-within-ncpor)
-[![License](.../license-Internal%20(NCPOR)-6C757D?style=for-the-badge)](#203-license-and-distribution)
-[![Docs](.../docs-21%20Sections%20%C2%B7%2021%20Appendices-2EC4B6?style=for-the-badge)](#table-of-contents)
+[![Version](https://img.shields.io/badge/version-v1.0.0--draft-0A2A43?style=for-the-badge)](#1-executive-summary)
+[![Status](https://img.shields.io/badge/status-Design%20Proposal-FF9F1C?style=for-the-badge)](#16-phased-development-roadmap)
+[![Programme](https://img.shields.io/badge/programme-NCPOR%20%C2%B7%20India-1B998B?style=for-the-badge)](#210-programme-context-within-ncpor)
+[![License](https://img.shields.io/badge/license-Internal%20(NCPOR)-6C757D?style=for-the-badge)](#203-license-and-distribution)
+[![Docs](https://img.shields.io/badge/docs-21%20Sections%20%C2%B7%2021%20Appendices-2EC4B6?style=for-the-badge)](#table-of-contents)
 
-![Python] ![PyTorch] ![FastAPI] ![PostgreSQL] ![React] ![TypeScript] ![Rust]
-![C / FreeRTOS] ![MQTT] ![Docker] ![GitHub Actions] ![100% Wave + Solar] ![PRs welcome]
+<br/>
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
+![C/FreeRTOS](https://img.shields.io/badge/C%20%2F%20FreeRTOS-00979D?style=flat-square&logo=freertos&logoColor=white)
+![MQTT](https://img.shields.io/badge/MQTT-660066?style=flat-square&logo=mqtt&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
+![Power](https://img.shields.io/badge/Power-100%25%20Wave%20%2B%20Solar-1B998B?style=flat-square)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)
+
+<br/><br/>
 
 | 🛰️ Vehicles | 🔄 Mission Cycle | 🌡️ Max Depth | 📈 Profiles / yr | ⛽ Fuel | 🚢 Ship Visits |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | **2** | **~10 days** | **~2,000 m** | **30–35** | **0 L** | **~1 / yr** |
 
-[📖 Documentation]  [🚀 Getting Started]  [🗺️ Roadmap]  [🧠 ML Models]  [🤝 Contributing]
+<br/>
+
+[📖 Documentation](#table-of-contents) &nbsp;·&nbsp;
+[🚀 Getting Started](#3-quick-start) &nbsp;·&nbsp;
+[🗺️ Roadmap](#16-phased-development-roadmap) &nbsp;·&nbsp;
+[🧠 ML Models](#8-machine-learning-trajectory-prediction) &nbsp;·&nbsp;
+[🤝 Contributing](#19-contributing)
 
 </div>
 
