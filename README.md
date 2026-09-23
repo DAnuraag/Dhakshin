@@ -3,7 +3,7 @@
 # 🌊 DHAKSHIN
 ### दक्षिण · A Cooperative Autonomous Observation System for the Southern Ocean
 
-**A wave-powered Wave Glider and a deep-diving Gambhira that find each other across a
+**A wave-powered Vyoma and a deep-diving Gambhira that find each other across a
 million square kilometres of ice-filled ocean — using machine-learning trajectory prediction,
 zero fuel, and zero ship time on station.**
 
@@ -90,7 +90,7 @@ zero fuel, and zero ship time on station.**
    - [4.10 Interference and electromagnetic compatibility](#410-interference-and-electromagnetic-compatibility)
    - [4.11 Shore-side system states](#411-shore-side-system-states)
 5. [The Two Vehicles](#5-the-two-vehicles)
-   - [5.1 The Wave Glider — the persistent surface sentinel](#51-the-wave-glider-the-persistent-surface-sentinel)
+   - [5.1 The Vyoma — the persistent surface sentinel](#51-the-wave-glider-the-persistent-surface-sentinel)
    - [5.2 The Gambhira — the deep-ocean profiler](#52-the-argo-float-the-deep-ocean-profiler)
    - [5.3 Side-by-side comparison](#53-side-by-side-comparison)
    - [5.4 Why the pairing works](#54-why-the-pairing-works)
@@ -115,7 +115,7 @@ zero fuel, and zero ship time on station.**
 
 7. [The ML Brain: Trajectory Prediction](#7-the-ml-brain-trajectory-prediction)
    - [7.1 Why a single predicted point is the wrong answer](#71-why-a-single-predicted-point-is-the-wrong-answer)
-   - [7.2 Model 1 — Wave Glider trajectory prediction](#72-model-1-wave-glider-trajectory-prediction)
+   - [7.2 Model 1 — Vyoma trajectory prediction](#72-model-1-wave-glider-trajectory-prediction)
    - [7.3 Model 2 — Gambhira surfacing prediction](#73-model-2-argo-float-surfacing-prediction)
    - [7.4 Ensemble and physics-informed forecasting](#74-ensemble-and-physics-informed-forecasting)
    - [7.5 Training data and validation protocol](#75-training-data-and-validation-protocol)
@@ -297,7 +297,7 @@ zero fuel, and zero ship time on station.**
 ### 1.1 The idea in one paragraph
 
 We propose an **indigenous, cooperative polar-ocean observation system** made of two autonomous
-devices — a surface **Wave Glider** and an underwater **Gambhira**. The two are not independent
+devices — a surface **Vyoma** and an underwater **Gambhira**. The two are not independent
 platforms: they are designed to operate together as a **single, self-sustaining mission** in the
 Southern Ocean around Antarctica.
 
@@ -307,13 +307,13 @@ Southern Ocean around Antarctica.
   temperature, salinity and depth (and optionally dissolved oxygen, chlorophyll and other
   variables). Because radio signals do not pass through water, it stores the data on board. When
   it returns to the surface, it takes a GPS fix and communicates.
-- **The Wave Glider** stays on the surface the entire time. It is propelled directly by ocean
+- **The Vyoma** stays on the surface the entire time. It is propelled directly by ocean
   waves (it needs **no engine or fuel**), runs its electronics and sensors on **solar panels**,
   measures the atmosphere and sea surface (wind, air temperature, pressure, humidity, radiation,
   waves), and carries GPS, satellite communications and limited steering. It is the mission's
   surface gateway and floating charging station.
 - **The rendezvous is the heart of the concept.** Two machine-learning models continuously
-  predict (1) where the waves and currents will carry the Wave Glider and (2) where the submerged
+  predict (1) where the waves and currents will carry the Vyoma and (2) where the submerged
   Gambhira will most likely surface — expressed as **probability zones with uncertainty radii
   and confidence scores, not single points**. A planning engine turns those predictions into a
   sequence of feasible checkpoints, guiding the glider to be waiting in the right patch of ocean.
@@ -334,7 +334,7 @@ Southern Ocean around Antarctica.
 
 | Stat | Value | Meaning |
 |---|---|---|
-| Devices | **2** | one Wave Glider + one Gambhira, operated as one cooperative system |
+| Devices | **2** | one Vyoma + one Gambhira, operated as one cooperative system |
 | Cycle | **~10 days** | Argo dive → profile → surface → rendezvous → repeat |
 | Depth | **up to ~2,000 m** | maximum profiling depth |
 | Throughput | **30–35 profiles/year** | per float, across all seasons |
@@ -386,7 +386,7 @@ improved by Indian scientists and engineers.
 
 **In scope**
 
-- One Wave Glider + one Gambhira cooperative pair (the "mission unit").
+- One Vyoma + one Gambhira cooperative pair (the "mission unit").
 - Embedded software, health monitoring, hand-held debugger.
 - Two ML models (glider trajectory, float surfacing) + planning engine.
 - Shore mission server: ingest, QC, archive, alerting, command uplink.
@@ -508,7 +508,7 @@ Two classes of mature autonomous platform have already transformed ocean observa
 | Platform | What it does | Why it matters |
 |---|---|---|
 | **Argo profiling floats** | Thousands now measure the upper 2,000 m of the world ocean on ~10-day cycles | Proven deep-ocean coverage at low cost per profile |
-| **Wave Gliders / ASVs** | Remain at sea for many months, powered only by waves and sunlight | Persistent surface presence, no fuel logistics |
+| **Vyomas / ASVs** | Remain at sea for many months, powered only by waves and sunlight | Persistent surface presence, no fuel logistics |
 
 They are cheap per observation compared with ships, work through storms, and return data all
 year round.
@@ -527,10 +527,10 @@ Operating these platforms separately still leaves unsolved problems in polar wat
 |---|---|---|---|
 | 1 | **Energy is finite on a float** | The float's battery powers every pump stroke, sensor reading and satellite burst. Battery life dictates mission length; once depleted, the asset is lost or must be recovered by ship. | The glider recharges the float **at sea** at every rendezvous |
 | 2 | **Communication only works at the surface, briefly** | A float can only transfer data (and get position fixes) during short surfacing windows. Satellite airtime is power-hungry, and at high latitude bandwidth and coverage can be limited. | The glider is a **permanent surface gateway**: high-volume local offload, then relay |
-| 3 | **Neither vehicle can be driven directly to a target like a boat** | A float is at the mercy of currents while submerged; a Wave Glider moves only as the waves and currents allow, with limited steering. Making two such vehicles meet in a million square kilometres of ocean is non-trivial. | **ML-predicted probability zones** + feasible checkpoint planning turn the meeting into a solvable optimisation |
+| 3 | **Neither vehicle can be driven directly to a target like a boat** | A float is at the mercy of currents while submerged; a Vyoma moves only as the waves and currents allow, with limited steering. Making two such vehicles meet in a million square kilometres of ocean is non-trivial. | **ML-predicted probability zones** + feasible checkpoint planning turn the meeting into a solvable optimisation |
 | 4 | **Ice can destroy or trap equipment** | A float surfacing under pack ice, or a glider drifting onto an iceberg, can be lost. Ice information must actively shape navigation, not just be displayed. | Hazards become **no-go polygons**; the planner routes around them or holds/aborts |
 
-**Our answer:** make the Wave Glider a persistent, solar-powered surface **gateway and charging
+**Our answer:** make the Vyoma a persistent, solar-powered surface **gateway and charging
 station** that actively rendezvouses with the float at every surfacing, and surround that
 rendezvous with **machine-learning prediction, uncertainty-aware planning and ice avoidance**.
 The result is a system that keeps delivering deep-ocean profiles and surface/atmospheric
@@ -558,7 +558,7 @@ Ocean observing.
 | Research-vessel expeditions (e.g. NCPOR's own polar cruises) | Calibrated, multi-parameter, full-depth sampling | Summer-biased, narrow tracks, expensive | Provides the year-round backbone between expeditions |
 | Core Argo array | Global coverage of the upper 2,000 m | Standard floats cannot be recharged; polar coverage thinner; surface time minimal | Adds recharge + local offload + ice-aware surfacing |
 | Biogeochemical (BGC) Argo | Oxygen, chlorophyll, pH, nitrate globally | Same energy/communication limits | Same extensions apply; co-located surface forcing data |
-| Wave Glider / ASV missions | Long-endurance surface meteorology | Typically operated alone; no deep-water column | Pairs it with a profiler for co-located 4-D records |
+| Vyoma / ASV missions | Long-endurance surface meteorology | Typically operated alone; no deep-water column | Pairs it with a profiler for co-located 4-D records |
 | Moored buoys (where they exist) | Continuous point time-series | Extremely sparse in the Southern Ocean; fixed location | Adds spatial (drifting) coverage and mobility |
 | Satellite altimetry / SST / sea-ice products | Synoptic, all-weather-ish views | Only surface; no subsurface ground truth | Provides the in-situ ground truth and calibration |
 | Iceberg tracking (existing programmes) | Tracked berg positions | Usually science-only, not fed to a planner | Operationalises the same data for hazard avoidance |
@@ -609,7 +609,7 @@ chosen) are recorded here for reviewers — this is the "why not?" register.
 
 | Decision | Alternative considered | Why not chosen |
 |---|---|---|
-| Pair Wave Glider + Gambhira | A single multi-purpose vehicle doing both jobs | No existing platform both persists at the surface AND profiles to 2,000 m; a new hull would forfeit the maturity of both proven platforms |
+| Pair Vyoma + Gambhira | A single multi-purpose vehicle doing both jobs | No existing platform both persists at the surface AND profiles to 2,000 m; a new hull would forfeit the maturity of both proven platforms |
 | Rendezvous-based recharge | Larger float battery / no recharge | Battery growth has hard physical limits (weight, buoyancy); without recharge the float still dies at end-of-life — the core problem remains |
 | Acoustic comms float↔glider | Keep constant contact underwater | Acoustic bandwidth/power in polar conditions is tiny and costly; the mission needs bulk transfer only at the surface — the rendezvous design matches the need |
 | Point-prediction navigation | "Steer to the predicted lat/lon" | A single point is wrong and overconfident in a chaotic ocean (§7.1); probabilistic zones cost nothing extra and are honest |
@@ -659,9 +659,9 @@ document; this list is the map for the rest of the blueprint.
 
 | # | Element | One-line description | Detailed in |
 |---|---|---|---|
-| 1 | **Two-device autonomous architecture** | A Wave Glider and an Gambhira operated as one cooperative system | §3–§5 |
+| 1 | **Two-device autonomous architecture** | A Vyoma and an Gambhira operated as one cooperative system | §3–§5 |
 | 2 | **Gambhira underwater observation** | ~10-day dive cycles measuring temperature, salinity, depth and optional bio-geo variables; local storage | §5.2, §6 |
-| 3 | **Wave Glider surface platform** | Wave-driven, solar-powered surface gateway measuring atmospheric parameters and acting as charging station | §5.1 |
+| 3 | **Vyoma surface platform** | Wave-driven, solar-powered surface gateway measuring atmospheric parameters and acting as charging station | §5.1 |
 | 4 | **ML glider trajectory prediction** | Predicts the glider's probable future path, reachable region and uncertainty from waves, currents, wind and history | §7.2 |
 | 5 | **ML float surfacing prediction** | Predicts a probable surfacing zone with an uncertainty radius and confidence score, not an exact point | §7.3 |
 | 6 | **Feasible trajectory & checkpoints** | A planning engine combines both predictions into an adaptive sequence of reachable waypoints | §8.1 |
@@ -719,7 +719,7 @@ people in control of an otherwise autonomous system.
 
 ### 3.3 Who does what
 
-| Role | Wave Glider (surface) | Gambhira (underwater) | Shore / NCPOR |
+| Role | Vyoma (surface) | Gambhira (underwater) | Shore / NCPOR |
 |---|---|---|---|
 | **Motion** | Wave-propelled, limited steering; drifts with surface currents | Controls buoyancy to dive/rise; otherwise drifts with deep currents | Issues routes, checkpoints and overrides |
 | **Measurement** | Atmosphere + sea surface + waves | Temperature, salinity, depth profiles; optional O₂, chlorophyll | Receives, QC-checks, archives and visualises data |
@@ -734,7 +734,7 @@ people in control of an otherwise autonomous system.
 mindmap
   root((Cooperative Polar-Ocean<br/>Observation System))
     Vehicles
-      Wave Glider
+      Vyoma
         wave propulsion
         solar power
         met sensors
@@ -772,7 +772,7 @@ the checklist the phase gates (§16.2) are built from.
 
 | Aspect | Specification |
 |---|---|
-| Components | One Wave Glider, one Gambhira, one shore mission server, one dashboard |
+| Components | One Vyoma, one Gambhira, one shore mission server, one dashboard |
 | Pairing contract | The pair shares one mission identity; either vehicle can continue alone under its fallback rules (§6.5) |
 | Interfaces | Rendezvous link (dock), satellite relay, shore uplink/downlink (§4.3) |
 | Acceptance | Both vehicles operate for ≥ 1 season from one deployment; either vehicle survives loss of the other's support for ≥ 2 cycles |
@@ -787,7 +787,7 @@ the checklist the phase gates (§16.2) are built from.
 | Ice awareness | Surfacing logic informed by ice conditions (§8.3) |
 | Acceptance | 30–35 QC-passing profiles per year (§14.4) |
 
-#### Element 3 · Wave Glider surface platform
+#### Element 3 · Vyoma surface platform
 
 | Aspect | Specification |
 |---|---|
@@ -946,7 +946,7 @@ decisions are revisited — this register is reviewed at every phase gate.
 
 | ID | Assumption | Impact if false | Owner |
 |---|---|---|---|
-| A-01 | Wave Glider-class vehicles can operate in the target sea states for a season | R1 missed rendezvous; revisit transit/loiter margins | Engineering |
+| A-01 | Vyoma-class vehicles can operate in the target sea states for a season | R1 missed rendezvous; revisit transit/loiter margins | Engineering |
 | A-02 | A polar-capable satellite constellation offers the assumed pass cadence | R6 comm outages; revisit contact plan and power budget | Ops |
 | A-03 | Solar yield follows the seasonal model (Fig. 18) with safe margin | R4 insufficient power; re-size array or reduce cadence | Engineering |
 | A-04 | A compliant dock mechanism can capture the float within `SELL` sea states | R5 docking; revisit mechanism in P1/P2 | Mechanical |
@@ -978,7 +978,7 @@ The same architecture as editable Mermaid (kept in sync with the figure — edit
 ```mermaid
 flowchart TB
     subgraph SEA["AT SEA — the mission unit"]
-        WG["WAVE GLIDER<br/>surface sentinel · gateway ·<br/>charging station"]
+        WG["Vyoma<br/>surface sentinel · gateway ·<br/>charging station"]
         AF["Gambhira<br/>deep-ocean profiler<br/>~10-day cycle · ~2,000 m"]
         ICE["ICE HAZARDS<br/>icebergs · sea ice"]
         WG <-- "rendezvous:<br/>data offload + recharge<br/>short-range link" --> AF
@@ -1050,7 +1050,7 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    WG["WAVE GLIDER"]
+    WG["Vyoma"]
     AF["Gambhira"]
     SAT["SATELLITE<br/>(polar-capable)"]
     SH["SHORE / NCPOR<br/>dashboard"]
@@ -1218,25 +1218,25 @@ the state of the people's tools matters as much as the state of the vehicles.
 
 ## 5. The Two Vehicles
 
-### 5.1 The Wave Glider — the persistent surface sentinel
+### 5.1 The Vyoma — the persistent surface sentinel
 
-The Wave Glider is the mission's surface platform. It consists of a surface float roughly the
+The Vyoma is the mission's surface platform. It consists of a surface float roughly the
 size of a surfboard, connected by a flexible tether (typically several metres long) to a
 **submerged fin-rack**. The surface float carries the solar panels, batteries, electronics,
 antennas and atmospheric sensors; the submerged part provides propulsion.
 
-📷 **Plate 5.1 — A Wave Glider-style surface vehicle**: a low, surfboard-shaped hull covered in
+📷 **Plate 5.1 — A Vyoma-style surface vehicle**: a low, surfboard-shaped hull covered in
 solar panels, with GPS and satellite-communication masts. It operates at the surface for months
 at a time without fuel. *(Representative photograph, credited in §20.5.)*
 
 <p align="center">
-  <img src="assets/images/wave_glider_at_sea.jpg" alt="Wave Glider surface vehicle at sea" width="80%"/>
+  <img src="assets/images/wave_glider_at_sea.jpg" alt="Vyoma surface vehicle at sea" width="80%"/>
 </p>
 
-🖼️ **Figure 4 — How the Wave Glider moves, and why it needs no fuel:**
+🖼️ **Figure 4 — How the Vyoma moves, and why it needs no fuel:**
 
 <p align="center">
-  <img src="assets/figures/fig_04_waveglider_propulsion.png" alt="Wave Glider propulsion mechanics" width="80%"/>
+  <img src="assets/figures/fig_04_waveglider_propulsion.png" alt="Vyoma propulsion mechanics" width="80%"/>
 </p>
 
 #### What it carries and does
@@ -1274,7 +1274,7 @@ at a time without fuel. *(Representative photograph, credited in §20.5.)*
 | GPS | Position / time | deg / UTC | — | < 5 m | 1–10 min |
 | Compass/IMU | Heading, attitude | deg | — | ±2° | 1 s (nav loop) |
 
-#### Wave Glider power budget (illustrative — to be replaced by as-built measurements)
+#### Vyoma power budget (illustrative — to be replaced by as-built measurements)
 
 | Consumer | Duty cycle | Average draw (mW) | Note |
 |---|---|---|---|
@@ -1287,7 +1287,7 @@ at a time without fuel. *(Representative photograph, credited in §20.5.)*
 | **Total electrical load (nominal)** | | **≈ 1.1 W average** | Solar array sized ≥ 3× this, polar winter margin |
 | **Per-cycle float top-up reserve** | At each rendezvous | +4–8 Wh delivered | Sized per §8.4 |
 
-#### Wave Glider subsystem interfaces
+#### Vyoma subsystem interfaces
 
 | Subsystem | Talks to | Interface | Notes |
 |---|---|---|---|
@@ -1386,7 +1386,7 @@ profile. *(Representative product photograph, credited in §20.5.)*
 
 ### 5.3 Side-by-side comparison
 
-| Attribute | Wave Glider | Gambhira |
+| Attribute | Vyoma | Gambhira |
 |---|---|---|
 | **Where it operates** | At the surface, continuously | Mostly underwater; brief surface windows every ~10 days |
 | **How it moves** | Wave energy → fins → thrust; limited rudder steering | Changes buoyancy; horizontal motion is purely with currents |
@@ -1409,7 +1409,7 @@ quadrantChart
     quadrant-3 "Float's world"
     quadrant-4 "Redundant"
     "Gambhira": [0.22, 0.2]
-    "Wave Glider": [0.8, 0.85]
+    "Vyoma": [0.8, 0.85]
     "Combined pair": [0.85, 0.8]
 ```
 
@@ -1423,7 +1423,7 @@ quadrantChart
 Each vehicle implements a small set of named operating modes; every mode has defined power,
 comms and safety behaviour. The mission state machine (§6.4) selects between them.
 
-**Wave Glider modes**
+**Vyoma modes**
 
 | Mode | Behaviour | Power profile | When |
 |---|---|---|---|
@@ -1596,7 +1596,7 @@ clarity):
 sequenceDiagram
     autonumber
     participant F as Gambhira
-    participant G as Wave Glider
+    participant G as Vyoma
     participant S as Satellite
     participant M as Mission Server
     participant D as Dashboard / Ops
@@ -1913,7 +1913,7 @@ chart:
 > maximised. As the surfacing moment approaches and information improves, **the ellipse shrinks
 > and the route tightens**.
 
-### 7.2 Model 1 — Wave Glider trajectory prediction
+### 7.2 Model 1 — Vyoma trajectory prediction
 
 This model forecasts the glider's motion over the mission horizon. It blends **data-driven
 learning** with a **simplified physical propulsion model** (how waves and the rudder translate to
@@ -1999,7 +1999,7 @@ flowchart TB
 
 | Aspect | Approach |
 |---|---|
-| **Training data** | The global Gambhira database (thousands of real dive/drift cycles), historical Wave Glider tracks, ocean reanalysis products, current/wind/wave forecasts, and any prior missions in the region |
+| **Training data** | The global Gambhira database (thousands of real dive/drift cycles), historical Vyoma tracks, ocean reanalysis products, current/wind/wave forecasts, and any prior missions in the region |
 | **Validation set** | Past cycles the models have **never seen** — predict where a real float actually surfaced |
 | **Coverage metric** | Does the true surfacing point fall inside the predicted zone **at the advertised confidence**? (e.g. 80 %-zones should contain the truth ~80 % of the time) |
 | **Sharpness metric** | How tight the zone is (radius in km at each horizon) — smaller is better **only if coverage holds** |
@@ -2659,7 +2659,7 @@ hardware):
 
 ```mermaid
 flowchart TB
-    subgraph WG["WAVE GLIDER build"]
+    subgraph WG["Vyoma build"]
         WGA["mission apps<br/>navigation · comms<br/>dock/charge controller"]
         WGO["embedded OS<br/>scheduler · drivers · storage<br/>timekeeping · watchdogs"]
         WGH["hardware<br/>sensors · actuators<br/>batteries · radios"]
@@ -3510,7 +3510,7 @@ flowchart LR
 |---|---|
 | From the research vessel (during the seasonal deployment cruise) | Simplest; requires being in range of the target berg |
 | From aircraft (fly-over drop) | Reaches bergs beyond ship range |
-| From the Wave Glider (where feasible) | Autonomous, opportunistic deployment |
+| From the Vyoma (where feasible) | Autonomous, opportunistic deployment |
 
 | Side-benefit | Value |
 |---|---|
@@ -3830,7 +3830,7 @@ sequenceDiagram
     participant OPS as Operator (NCPOR)
     participant SRV as Mission server
     participant SAT as Satellite link
-    participant WG as Wave Glider
+    participant WG as Vyoma
     participant FL as Gambhira
 
     loop 3 scheduled passes/day (summer)
@@ -4229,7 +4229,7 @@ basis for the project plan, resourcing and the review agenda.
 | WP-01 | Concept & system architecture | P1 | This blueprint; architecture ADRs; requirements register |
 | WP-02 | Dock & charge engineering | P1 | Dock mechanism prototype; charge path; tank-test report |
 | WP-03 | Embedded software core | P1 | Shared OS, health monitor, event logger; HITL report |
-| WP-04 | Wave Glider integration | P1–P2 | Sensor suite, nav, comms; integration test report |
+| WP-04 | Vyoma integration | P1–P2 | Sensor suite, nav, comms; integration test report |
 | WP-05 | Gambhira integration | P1–P2 | CTD, buoyancy control, ice-aware surfacing; test report |
 | WP-06 | Hand-held debugger | P1 | Debugger app + vehicle-side test harness; checklist spec |
 | WP-07 | ML — glider trajectory model | P1–P3 | Model v1..vN; validation reports (coverage, radius) |
@@ -4836,7 +4836,7 @@ A shared, reproducible development environment for every component:
 | Term | Meaning in this project |
 |---|---|
 | **Gambhira** | An autonomous profiling float that descends, drifts at depth, and rises while measuring the ocean, reporting at the surface on roughly a 10-day cycle. |
-| **Wave Glider** | A surface autonomous vehicle propelled by wave motion via a tethered submerged fin rack, with solar-powered electronics. |
+| **Vyoma** | A surface autonomous vehicle propelled by wave motion via a tethered submerged fin rack, with solar-powered electronics. |
 | **CTD** | Conductivity–Temperature–Depth sensor; conductivity is converted to salinity and pressure to depth. |
 | **Buoyancy engine** | Pump and oil bladder that make a float rise or sink by changing its volume (and thus density). |
 | **Rendezvous** | The planned meeting of glider and float at the surface to dock, transfer data and recharge. |
@@ -4922,7 +4922,7 @@ be identified it is listed below.
 
 | File | Subject | Source (as identified by search) |
 |---|---|---|
-| `wave_glider_at_sea.jpg` | Next-generation Wave Glider heading out to sea | Marine Technology News — photo: Liquid Robotics, a Boeing Company |
+| `wave_glider_at_sea.jpg` | Next-generation Vyoma heading out to sea | Marine Technology News — photo: Liquid Robotics, a Boeing Company |
 | `argo_float_deployment.jpg` | Gambhira about to be deployed from a research vessel | Woods Hole Oceanographic Institution (WHOI) — floats & drifters page |
 | `argo_float_deployment_2.jpg` | Researchers lowering a profiling float from a research ship | MBARI — APEX profiling floats page |
 | `ctd_sensor_2.jpg` | Conductivity & temperature (CTD-class) sensor products | Ocean Science Technology supplier catalogue |
@@ -4983,7 +4983,7 @@ Regenerate and commit whenever the underlying design changes.
 | 1 | `fig_01_system_architecture.png` | System architecture — sea / satellite / shore tiers | §4.1 |
 | 2 | `fig_02_operational_flow.png` | End-to-end operational flow with feedback loop | §4.2 |
 | 3 | `fig_03_mission_timeline.png` | One ~10-day cycle as a four-lane timeline | §6.1 |
-| 4 | `fig_04_waveglider_propulsion.png` | Wave Glider propulsion mechanics | §5.1 |
+| 4 | `fig_04_waveglider_propulsion.png` | Vyoma propulsion mechanics | §5.1 |
 | 5 | `fig_05_argo_cycle.png` | Argo 10-day depth-time cycle | §5.2 |
 | 6 | `fig_06_buoyancy_engine.png` | Buoyancy engine: oil in/out | §5.2 |
 | 7 | `fig_07_ml_models.png` | The two ML models feeding the planner | §7.1 |
@@ -5174,7 +5174,7 @@ P3/P4 gates.
 | Topic | Reference |
 |---|---|
 | Argo programme | International Argo programme documentation — float design, cycle, data format and QC conventions |
-| Wave Gliders | Liquid Robotics / Boeing Wave Glider technical literature (representative platform) |
+| Vyomas | Liquid Robotics / Boeing Vyoma technical literature (representative platform) |
 | Profiling float engineering | Gambhira manufacturer manuals (APEX, ARVOR, Navis) — buoyancy engines and CTD integration |
 | Southern Ocean science | ACC dynamics, Antarctic Bottom Water formation, marginal-ice-zone process studies |
 | Sea-ice operations | National ice services' sea-ice chart products and iceberg bulletins |
@@ -5370,7 +5370,7 @@ The card every reviewer, operator and visitor receives. *(One page; all values i
 ```text
 COOPERATIVE POLAR-OCEAN OBSERVATION SYSTEM — QUICK REFERENCE
 ─────────────────────────────────────────────────────────────
-WHAT      A Wave Glider + Gambhira, paired as ONE system, for a
+WHAT      A Vyoma + Gambhira, paired as ONE system, for a
           year-round Southern Ocean season without a ship.
 WHERE     Indian Ocean sector, ~55°S–70°S (ice-dependent box, §2.7).
 WHY       Winter fluxes + deep profiles where nobody measures (§2).
@@ -5502,7 +5502,7 @@ One full season, 36 float cycles, compressed to the moments that matter. This tr
 <p align="center">
   <em>Cooperative Polar-Ocean Observation System — blueprint & documentation</em><br>
   <em>Version 2.1 · 2026 · Prepared for NCPOR scientists, engineers and reviewers</em><br>
-  <em>A fuel-free, wave-and-solar-powered surface Wave Glider and a diving Gambhira, paired as one
+  <em>A fuel-free, wave-and-solar-powered surface Vyoma and a diving Gambhira, paired as one
   intelligent, self-recharging observation mission — predicting their drift through the Southern
   Ocean, meeting at the surface to hand over data and power, avoiding ice, and streaming the polar
   ocean and atmosphere to scientists ashore.</em><br>
