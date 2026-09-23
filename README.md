@@ -3,7 +3,7 @@
 # 🌊 DHAKSHIN
 ### दक्षिण · A Cooperative Autonomous Observation System for the Southern Ocean
 
-**A wave-powered Wave Glider and a deep-diving Argo Float that find each other across a
+**A wave-powered Wave Glider and a deep-diving Gambhira that find each other across a
 million square kilometres of ice-filled ocean — using machine-learning trajectory prediction,
 zero fuel, and zero ship time on station.**
 
@@ -91,7 +91,7 @@ zero fuel, and zero ship time on station.**
    - [4.11 Shore-side system states](#411-shore-side-system-states)
 5. [The Two Vehicles](#5-the-two-vehicles)
    - [5.1 The Wave Glider — the persistent surface sentinel](#51-the-wave-glider-the-persistent-surface-sentinel)
-   - [5.2 The Argo Float — the deep-ocean profiler](#52-the-argo-float-the-deep-ocean-profiler)
+   - [5.2 The Gambhira — the deep-ocean profiler](#52-the-argo-float-the-deep-ocean-profiler)
    - [5.3 Side-by-side comparison](#53-side-by-side-comparison)
    - [5.4 Why the pairing works](#54-why-the-pairing-works)
    - [5.5 Vehicle operating modes](#55-vehicle-operating-modes)
@@ -116,7 +116,7 @@ zero fuel, and zero ship time on station.**
 7. [The ML Brain: Trajectory Prediction](#7-the-ml-brain-trajectory-prediction)
    - [7.1 Why a single predicted point is the wrong answer](#71-why-a-single-predicted-point-is-the-wrong-answer)
    - [7.2 Model 1 — Wave Glider trajectory prediction](#72-model-1-wave-glider-trajectory-prediction)
-   - [7.3 Model 2 — Argo Float surfacing prediction](#73-model-2-argo-float-surfacing-prediction)
+   - [7.3 Model 2 — Gambhira surfacing prediction](#73-model-2-argo-float-surfacing-prediction)
    - [7.4 Ensemble and physics-informed forecasting](#74-ensemble-and-physics-informed-forecasting)
    - [7.5 Training data and validation protocol](#75-training-data-and-validation-protocol)
    - [7.6 Model lifecycle and retraining](#76-model-lifecycle-and-retraining)
@@ -297,11 +297,11 @@ zero fuel, and zero ship time on station.**
 ### 1.1 The idea in one paragraph
 
 We propose an **indigenous, cooperative polar-ocean observation system** made of two autonomous
-devices — a surface **Wave Glider** and an underwater **Argo Float**. The two are not independent
+devices — a surface **Wave Glider** and an underwater **Gambhira**. The two are not independent
 platforms: they are designed to operate together as a **single, self-sustaining mission** in the
 Southern Ocean around Antarctica.
 
-- **The Argo Float** spends most of its life underwater on a repeating ~10-day cycle. It sinks to
+- **The Gambhira** spends most of its life underwater on a repeating ~10-day cycle. It sinks to
   roughly **1,000 m**, drifts with deep currents for about nine days while measuring the ocean,
   dives deeper to about **2,000 m**, and then rises while recording a continuous profile of
   temperature, salinity and depth (and optionally dissolved oxygen, chlorophyll and other
@@ -314,7 +314,7 @@ Southern Ocean around Antarctica.
   surface gateway and floating charging station.
 - **The rendezvous is the heart of the concept.** Two machine-learning models continuously
   predict (1) where the waves and currents will carry the Wave Glider and (2) where the submerged
-  Argo Float will most likely surface — expressed as **probability zones with uncertainty radii
+  Gambhira will most likely surface — expressed as **probability zones with uncertainty radii
   and confidence scores, not single points**. A planning engine turns those predictions into a
   sequence of feasible checkpoints, guiding the glider to be waiting in the right patch of ocean.
   When the float surfaces, the glider docks and locks onto it, **offloads the stored scientific
@@ -334,7 +334,7 @@ Southern Ocean around Antarctica.
 
 | Stat | Value | Meaning |
 |---|---|---|
-| Devices | **2** | one Wave Glider + one Argo Float, operated as one cooperative system |
+| Devices | **2** | one Wave Glider + one Gambhira, operated as one cooperative system |
 | Cycle | **~10 days** | Argo dive → profile → surface → rendezvous → repeat |
 | Depth | **up to ~2,000 m** | maximum profiling depth |
 | Throughput | **30–35 profiles/year** | per float, across all seasons |
@@ -386,7 +386,7 @@ improved by Indian scientists and engineers.
 
 **In scope**
 
-- One Wave Glider + one Argo Float cooperative pair (the "mission unit").
+- One Wave Glider + one Gambhira cooperative pair (the "mission unit").
 - Embedded software, health monitoring, hand-held debugger.
 - Two ML models (glider trajectory, float surfacing) + planning engine.
 - Shore mission server: ingest, QC, archive, alerting, command uplink.
@@ -513,7 +513,7 @@ Two classes of mature autonomous platform have already transformed ocean observa
 They are cheap per observation compared with ships, work through storms, and return data all
 year round.
 
-> 💬 **In plain language.** An Argo float is a small, torpedo-shaped robot that sinks on purpose,
+> 💬 **In plain language.** An Gambhira is a small, torpedo-shaped robot that sinks on purpose,
 > drifts in the deep for over a week measuring the ocean, and pops back up to report. A Wave
 > Glider is a surfboard-sized solar robot that surfs indefinitely without fuel, converting the
 > up-and-down motion of waves into forward motion. Both already exist and are proven at sea;
@@ -609,7 +609,7 @@ chosen) are recorded here for reviewers — this is the "why not?" register.
 
 | Decision | Alternative considered | Why not chosen |
 |---|---|---|
-| Pair Wave Glider + Argo Float | A single multi-purpose vehicle doing both jobs | No existing platform both persists at the surface AND profiles to 2,000 m; a new hull would forfeit the maturity of both proven platforms |
+| Pair Wave Glider + Gambhira | A single multi-purpose vehicle doing both jobs | No existing platform both persists at the surface AND profiles to 2,000 m; a new hull would forfeit the maturity of both proven platforms |
 | Rendezvous-based recharge | Larger float battery / no recharge | Battery growth has hard physical limits (weight, buoyancy); without recharge the float still dies at end-of-life — the core problem remains |
 | Acoustic comms float↔glider | Keep constant contact underwater | Acoustic bandwidth/power in polar conditions is tiny and costly; the mission needs bulk transfer only at the surface — the rendezvous design matches the need |
 | Point-prediction navigation | "Steer to the predicted lat/lon" | A single point is wrong and overconfident in a chaotic ocean (§7.1); probabilistic zones cost nothing extra and are honest |
@@ -659,8 +659,8 @@ document; this list is the map for the rest of the blueprint.
 
 | # | Element | One-line description | Detailed in |
 |---|---|---|---|
-| 1 | **Two-device autonomous architecture** | A Wave Glider and an Argo Float operated as one cooperative system | §3–§5 |
-| 2 | **Argo Float underwater observation** | ~10-day dive cycles measuring temperature, salinity, depth and optional bio-geo variables; local storage | §5.2, §6 |
+| 1 | **Two-device autonomous architecture** | A Wave Glider and an Gambhira operated as one cooperative system | §3–§5 |
+| 2 | **Gambhira underwater observation** | ~10-day dive cycles measuring temperature, salinity, depth and optional bio-geo variables; local storage | §5.2, §6 |
 | 3 | **Wave Glider surface platform** | Wave-driven, solar-powered surface gateway measuring atmospheric parameters and acting as charging station | §5.1 |
 | 4 | **ML glider trajectory prediction** | Predicts the glider's probable future path, reachable region and uncertainty from waves, currents, wind and history | §7.2 |
 | 5 | **ML float surfacing prediction** | Predicts a probable surfacing zone with an uncertainty radius and confidence score, not an exact point | §7.3 |
@@ -719,7 +719,7 @@ people in control of an otherwise autonomous system.
 
 ### 3.3 Who does what
 
-| Role | Wave Glider (surface) | Argo Float (underwater) | Shore / NCPOR |
+| Role | Wave Glider (surface) | Gambhira (underwater) | Shore / NCPOR |
 |---|---|---|---|
 | **Motion** | Wave-propelled, limited steering; drifts with surface currents | Controls buoyancy to dive/rise; otherwise drifts with deep currents | Issues routes, checkpoints and overrides |
 | **Measurement** | Atmosphere + sea surface + waves | Temperature, salinity, depth profiles; optional O₂, chlorophyll | Receives, QC-checks, archives and visualises data |
@@ -740,7 +740,7 @@ mindmap
         met sensors
         satcom gateway
         docking hardware
-      Argo Float
+      Gambhira
         buoyancy engine
         CTD profile
         on-board storage
@@ -772,12 +772,12 @@ the checklist the phase gates (§16.2) are built from.
 
 | Aspect | Specification |
 |---|---|
-| Components | One Wave Glider, one Argo Float, one shore mission server, one dashboard |
+| Components | One Wave Glider, one Gambhira, one shore mission server, one dashboard |
 | Pairing contract | The pair shares one mission identity; either vehicle can continue alone under its fallback rules (§6.5) |
 | Interfaces | Rendezvous link (dock), satellite relay, shore uplink/downlink (§4.3) |
 | Acceptance | Both vehicles operate for ≥ 1 season from one deployment; either vehicle survives loss of the other's support for ≥ 2 cycles |
 
-#### Element 2 · Argo Float underwater observation
+#### Element 2 · Gambhira underwater observation
 
 | Aspect | Specification |
 |---|---|
@@ -979,7 +979,7 @@ The same architecture as editable Mermaid (kept in sync with the figure — edit
 flowchart TB
     subgraph SEA["AT SEA — the mission unit"]
         WG["WAVE GLIDER<br/>surface sentinel · gateway ·<br/>charging station"]
-        AF["ARGO FLOAT<br/>deep-ocean profiler<br/>~10-day cycle · ~2,000 m"]
+        AF["Gambhira<br/>deep-ocean profiler<br/>~10-day cycle · ~2,000 m"]
         ICE["ICE HAZARDS<br/>icebergs · sea ice"]
         WG <-- "rendezvous:<br/>data offload + recharge<br/>short-range link" --> AF
         ICE -. "avoided via<br/>no-go polygons" .-> WG
@@ -1051,7 +1051,7 @@ flowchart LR
 ```mermaid
 flowchart TB
     WG["WAVE GLIDER"]
-    AF["ARGO FLOAT"]
+    AF["Gambhira"]
     SAT["SATELLITE<br/>(polar-capable)"]
     SH["SHORE / NCPOR<br/>dashboard"]
 
@@ -1246,7 +1246,7 @@ at a time without fuel. *(Representative photograph, credited in §20.5.)*
 | **Wave-propulsion system** | Submerged body with rows of hinged fins plus a rudder; no engine and no fuel. Available steering/control mechanisms (and, where fitted, small auxiliary thrusters) are used within their strict energy and sea-state limits. |
 | **Solar power system** | Deck-mounted solar panels and rechargeable batteries keep sensors, computers and satellite links running through the long polar summer daylight. |
 | **Atmospheric & sea-surface sensors** | Wind speed and direction, air temperature, barometric pressure, humidity, incoming solar radiation, wave height/period/direction and sea-surface temperature. This continuous weather record is one of the glider's primary scientific products. |
-| **Navigation & communications** | GPS receiver, a satellite modem for data and commands, and a short-range link to talk to the Argo Float when it surfaces. |
+| **Navigation & communications** | GPS receiver, a satellite modem for data and commands, and a short-range link to talk to the Gambhira when it surfaces. |
 | **Docking / charging hardware** | A mechanical capture-and-lock feature and charge connector that physically secure the float and pass power and data during a rendezvous. |
 
 #### Reference performance envelope (illustrative)
@@ -1305,9 +1305,9 @@ at a time without fuel. *(Representative photograph, credited in §20.5.)*
 > realistically reach and plan routes that go mostly **with** the waves and currents, rather than
 > assuming free movement in any direction.
 
-### 5.2 The Argo Float — the deep-ocean profiler
+### 5.2 The Gambhira — the deep-ocean profiler
 
-The Argo Float is a small, autonomous, vertically profiling robot, typically a cylindrical
+The Gambhira is a small, autonomous, vertically profiling robot, typically a cylindrical
 pressure hull one to two metres tall carrying sensors at the top and a **buoyancy engine**. It
 cannot propel itself horizontally; instead it changes its buoyancy to rise or sink, and the
 ocean's currents carry it horizontally between profiles.
@@ -1317,7 +1317,7 @@ cylindrical and designed to be launched by hand or crane. *(Representative photo
 in §20.5.)*
 
 <p align="center">
-  <img src="assets/images/argo_float_deployment.jpg" alt="Argo float deployment" width="80%"/>
+  <img src="assets/images/argo_float_deployment.jpg" alt="Gambhira deployment" width="80%"/>
 </p>
 
 #### How it dives and rises
@@ -1334,10 +1334,10 @@ drift almost for free.
   <img src="assets/figures/fig_06_buoyancy_engine.png" alt="Buoyancy engine mechanics" width="80%"/>
 </p>
 
-🖼️ **Figure 5 — The Argo Float's repeating ~10-day mission cycle:**
+🖼️ **Figure 5 — The Gambhira's repeating ~10-day mission cycle:**
 
 <p align="center">
-  <img src="assets/figures/fig_05_argo_cycle.png" alt="Argo float 10-day cycle depth profile" width="72%"/>
+  <img src="assets/figures/fig_05_argo_cycle.png" alt="Gambhira 10-day cycle depth profile" width="72%"/>
 </p>
 
 #### What it measures
@@ -1349,7 +1349,7 @@ drift almost for free.
 | **Sampling resolution** | Fine vertical intervals — order of every couple of metres | Recorded during the ~2,000 m ascent |
 | **Storage** | All data stored on board until the surface window | Transferred at rendezvous or via burst |
 
-#### Argo Float engineering specification (reference)
+#### Gambhira engineering specification (reference)
 
 | Parameter | Value (illustrative) | Notes |
 |---|---|---|
@@ -1386,7 +1386,7 @@ profile. *(Representative product photograph, credited in §20.5.)*
 
 ### 5.3 Side-by-side comparison
 
-| Attribute | Wave Glider | Argo Float |
+| Attribute | Wave Glider | Gambhira |
 |---|---|---|
 | **Where it operates** | At the surface, continuously | Mostly underwater; brief surface windows every ~10 days |
 | **How it moves** | Wave energy → fins → thrust; limited rudder steering | Changes buoyancy; horizontal motion is purely with currents |
@@ -1408,7 +1408,7 @@ quadrantChart
     quadrant-2 "Glider's world"
     quadrant-3 "Float's world"
     quadrant-4 "Redundant"
-    "Argo Float": [0.22, 0.2]
+    "Gambhira": [0.22, 0.2]
     "Wave Glider": [0.8, 0.85]
     "Combined pair": [0.85, 0.8]
 ```
@@ -1436,7 +1436,7 @@ comms and safety behaviour. The mission state machine (§6.4) selects between th
 | `DEGRADED` | Load-shedded operation: reduced sampling/tx | Minimal (managed) | Low solar / faults |
 | `SURVIVAL` | Bare electronics alive, store data, occasional tx | Absolute minimum | Critical energy state |
 
-**Argo Float modes**
+**Gambhira modes**
 
 | Mode | Behaviour | Energy use | When |
 |---|---|---|---|
@@ -1560,7 +1560,7 @@ flowchart TD
 
 *Preparing a profiling ocean glider for launch (NOAA AOML photo). The glider family — Slocum,
 Seaglider, Spray — is the mature, energy-frugal technology lineage the paired mission builds on;
-the Argo float brings the same philosophy to the deep water column (§2.3).*
+the Gambhira brings the same philosophy to the deep water column (§2.3).*
 
 > 📐 **Design rule.** A sensor earns its place on this payload only if it (a) serves a §2.5
 > question, (b) survives the winter power budget (§8.4), and (c) has a calibration story (§5.8).
@@ -1595,7 +1595,7 @@ clarity):
 ```mermaid
 sequenceDiagram
     autonumber
-    participant F as Argo Float
+    participant F as Gambhira
     participant G as Wave Glider
     participant S as Satellite
     participant M as Mission Server
@@ -1635,7 +1635,7 @@ well understood and will include:
 | **Data transfer** | Short-range, high-reliability radio or wired link across the docked interface | Far faster and lower-power than sending the whole profile over satellite; CRC/retransmit; resumable |
 | **Recharging** | Wet-rated connector or inductive (contactless) charging link fed by the glider's battery | Charge control and temperature monitoring managed by both vehicles' embedded software |
 
-> 📝 **Design note — managing the surface window.** A conventional Argo float spends only a short
+> 📝 **Design note — managing the surface window.** A conventional Gambhira spends only a short
 > time at the surface transmitting. A docked recharge needs a longer, planned surface interval.
 > The mission design accounts for this: **profiles are transferred in the first minutes**,
 > charging proceeds to a **safe target charge (not necessarily 100 %)** over the following
@@ -1927,7 +1927,7 @@ speed and heading).
 | **Horizon** | Mission-relevant: typically out to the next rendezvous (+ a few days margin) |
 | **Update cadence** | Re-run ashore on each new telemetry batch; lightweight inference on board between uplinks |
 
-### 7.3 Model 2 — Argo Float surfacing prediction
+### 7.3 Model 2 — Gambhira surfacing prediction
 
 This model predicts where the submerged, unpowered float will end up during its next surfacing.
 
@@ -1999,7 +1999,7 @@ flowchart TB
 
 | Aspect | Approach |
 |---|---|
-| **Training data** | The global Argo float database (thousands of real dive/drift cycles), historical Wave Glider tracks, ocean reanalysis products, current/wind/wave forecasts, and any prior missions in the region |
+| **Training data** | The global Gambhira database (thousands of real dive/drift cycles), historical Wave Glider tracks, ocean reanalysis products, current/wind/wave forecasts, and any prior missions in the region |
 | **Validation set** | Past cycles the models have **never seen** — predict where a real float actually surfaced |
 | **Coverage metric** | Does the true surfacing point fall inside the predicted zone **at the advertised confidence**? (e.g. 80 %-zones should contain the truth ~80 % of the time) |
 | **Sharpness metric** | How tight the zone is (radius in km at each horizon) — smaller is better **only if coverage holds** |
@@ -2671,7 +2671,7 @@ flowchart TB
         LG["time-stamped event logger"]
         FL["fault localisation<br/>sensor / comm / power / control"]
     end
-    subgraph AF["ARGO FLOAT build"]
+    subgraph AF["Gambhira build"]
         AFA["mission apps<br/>dive/profile control<br/>ice-aware surfacing<br/>buoyancy engine driver"]
         AFO["embedded OS<br/>scheduler · drivers · storage<br/>timekeeping · watchdogs"]
         AFH["hardware<br/>CTD · pump · bladder<br/>battery · radio"]
@@ -2847,7 +2847,7 @@ The debugger app produces this report at every deployment; it is archived with t
 PRE-DEPLOYMENT DEBUGGER REPORT
 ==============================
 Mission            : CPO-2026-S1
-Vehicle            : NCPOR-FLT-001 (Argo Float)
+Vehicle            : NCPOR-FLT-001 (Gambhira)
 Engineer           : ____________________   Date/UTC : _______________
 Location           : R/V ______________ ,  ____°S ____°E
 
@@ -3831,7 +3831,7 @@ sequenceDiagram
     participant SRV as Mission server
     participant SAT as Satellite link
     participant WG as Wave Glider
-    participant FL as Argo Float
+    participant FL as Gambhira
 
     loop 3 scheduled passes/day (summer)
         WG->>SAT: telemetry + science backlog (M05/M06)
@@ -4230,7 +4230,7 @@ basis for the project plan, resourcing and the review agenda.
 | WP-02 | Dock & charge engineering | P1 | Dock mechanism prototype; charge path; tank-test report |
 | WP-03 | Embedded software core | P1 | Shared OS, health monitor, event logger; HITL report |
 | WP-04 | Wave Glider integration | P1–P2 | Sensor suite, nav, comms; integration test report |
-| WP-05 | Argo Float integration | P1–P2 | CTD, buoyancy control, ice-aware surfacing; test report |
+| WP-05 | Gambhira integration | P1–P2 | CTD, buoyancy control, ice-aware surfacing; test report |
 | WP-06 | Hand-held debugger | P1 | Debugger app + vehicle-side test harness; checklist spec |
 | WP-07 | ML — glider trajectory model | P1–P3 | Model v1..vN; validation reports (coverage, radius) |
 | WP-08 | ML — surfacing zone model | P1–P3 | Model v1..vN; validation reports; calibration artefacts |
@@ -4751,7 +4751,7 @@ docker compose up --build        # everything: db + bus + server + dashboard + s
 
 | # | Question | Answer |
 |---|---|---|
-| 1 | Why not just use existing Argo floats and a normal satellite link? | Because energy and airtime are the float's limits (§2.4). The pairing removes both: local offload is orders of magnitude cheaper than satellite per byte, and recharge removes the end-of-life cliff. |
+| 1 | Why not just use existing Gambhiras and a normal satellite link? | Because energy and airtime are the float's limits (§2.4). The pairing removes both: local offload is orders of magnitude cheaper than satellite per byte, and recharge removes the end-of-life cliff. |
 | 2 | Why is the objective "P(rendezvous)" and not "minimum distance"? | A distance-minimising plan can be impossible (currents, ice) or expensive (headwind steering). A probability objective admits "arrive early and loiter inside the zone", which is the physically honest goal (§8.2). |
 | 3 | What if the ML is wrong for several cycles in a row? | Coverage is monitored in production (§7.10). Sustained under-coverage triggers a fallback to climatology-based priors, wider zones and eventually human replanning — never blind trust. |
 | 4 | Can the float recharge anywhere else? | No — the glider is the only charging station in the design. The float's own battery is the reserve that bridges any missed rendezvous (§6.5). |
@@ -4835,7 +4835,7 @@ A shared, reproducible development environment for every component:
 
 | Term | Meaning in this project |
 |---|---|
-| **Argo Float** | An autonomous profiling float that descends, drifts at depth, and rises while measuring the ocean, reporting at the surface on roughly a 10-day cycle. |
+| **Gambhira** | An autonomous profiling float that descends, drifts at depth, and rises while measuring the ocean, reporting at the surface on roughly a 10-day cycle. |
 | **Wave Glider** | A surface autonomous vehicle propelled by wave motion via a tethered submerged fin rack, with solar-powered electronics. |
 | **CTD** | Conductivity–Temperature–Depth sensor; conductivity is converted to salinity and pressure to depth. |
 | **Buoyancy engine** | Pump and oil bladder that make a float rise or sink by changing its volume (and thus density). |
@@ -4923,7 +4923,7 @@ be identified it is listed below.
 | File | Subject | Source (as identified by search) |
 |---|---|---|
 | `wave_glider_at_sea.jpg` | Next-generation Wave Glider heading out to sea | Marine Technology News — photo: Liquid Robotics, a Boeing Company |
-| `argo_float_deployment.jpg` | Argo float about to be deployed from a research vessel | Woods Hole Oceanographic Institution (WHOI) — floats & drifters page |
+| `argo_float_deployment.jpg` | Gambhira about to be deployed from a research vessel | Woods Hole Oceanographic Institution (WHOI) — floats & drifters page |
 | `argo_float_deployment_2.jpg` | Researchers lowering a profiling float from a research ship | MBARI — APEX profiling floats page |
 | `ctd_sensor_2.jpg` | Conductivity & temperature (CTD-class) sensor products | Ocean Science Technology supplier catalogue |
 | `iceberg_a23a.jpg` | Iceberg A-23a drifting in the Southern Ocean | Live Science (Futurism/CDN imagery) |
@@ -5175,7 +5175,7 @@ P3/P4 gates.
 |---|---|
 | Argo programme | International Argo programme documentation — float design, cycle, data format and QC conventions |
 | Wave Gliders | Liquid Robotics / Boeing Wave Glider technical literature (representative platform) |
-| Profiling float engineering | Argo float manufacturer manuals (APEX, ARVOR, Navis) — buoyancy engines and CTD integration |
+| Profiling float engineering | Gambhira manufacturer manuals (APEX, ARVOR, Navis) — buoyancy engines and CTD integration |
 | Southern Ocean science | ACC dynamics, Antarctic Bottom Water formation, marginal-ice-zone process studies |
 | Sea-ice operations | National ice services' sea-ice chart products and iceberg bulletins |
 | Probabilistic forecasting | Ensemble and Monte-Carlo forecasting; proper scoring rules (CRPS) for distribution forecasts |
@@ -5370,7 +5370,7 @@ The card every reviewer, operator and visitor receives. *(One page; all values i
 ```text
 COOPERATIVE POLAR-OCEAN OBSERVATION SYSTEM — QUICK REFERENCE
 ─────────────────────────────────────────────────────────────
-WHAT      A Wave Glider + Argo Float, paired as ONE system, for a
+WHAT      A Wave Glider + Gambhira, paired as ONE system, for a
           year-round Southern Ocean season without a ship.
 WHERE     Indian Ocean sector, ~55°S–70°S (ice-dependent box, §2.7).
 WHY       Winter fluxes + deep profiles where nobody measures (§2).
@@ -5502,7 +5502,7 @@ One full season, 36 float cycles, compressed to the moments that matter. This tr
 <p align="center">
   <em>Cooperative Polar-Ocean Observation System — blueprint & documentation</em><br>
   <em>Version 2.1 · 2026 · Prepared for NCPOR scientists, engineers and reviewers</em><br>
-  <em>A fuel-free, wave-and-solar-powered surface Wave Glider and a diving Argo Float, paired as one
+  <em>A fuel-free, wave-and-solar-powered surface Wave Glider and a diving Gambhira, paired as one
   intelligent, self-recharging observation mission — predicting their drift through the Southern
   Ocean, meeting at the surface to hand over data and power, avoiding ice, and streaming the polar
   ocean and atmosphere to scientists ashore.</em><br>
