@@ -33,7 +33,7 @@ zero fuel, and zero ship time on station.**
 
 | 🛰️ Vehicles | 🔄 Mission Cycle | 🌡️ Max Depth | 📈 Profiles / yr | ⛽ Fuel | 🚢 Ship Visits |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **2** | **~10 days** | **~2,000 m** | **30–35** | **0 L** | **~1 / yr** |
+| **3** | **~10 days** | **~2,000 m** | **30–35** | **0 L** | **~1 / yr** |
 
 <br/>
 
