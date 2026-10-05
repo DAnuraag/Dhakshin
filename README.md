@@ -91,7 +91,7 @@ zero fuel, and zero ship time on station.**
    - [4.11 Shore-side system states](#411-shore-side-system-states)
 5. [The Two Vehicles](#5-the-two-vehicles)
    - [5.1 The Vyoma — the persistent surface sentinel](#51-the-wave-glider-the-persistent-surface-sentinel)
-   - [5.2 The Gambhira — the deep-ocean profiler](#52-the-argo-float-the-deep-ocean-profiler)
+   - [5.2 The Gambhira — the deep-ocean profiler](#52-the-Gambhira-float-the-deep-ocean-profiler)
    - [5.3 Side-by-side comparison](#53-side-by-side-comparison)
    - [5.4 Why the pairing works](#54-why-the-pairing-works)
    - [5.5 Vehicle operating modes](#55-vehicle-operating-modes)
@@ -116,7 +116,7 @@ zero fuel, and zero ship time on station.**
 7. [The ML Brain: Trajectory Prediction](#7-the-ml-brain-trajectory-prediction)
    - [7.1 Why a single predicted point is the wrong answer](#71-why-a-single-predicted-point-is-the-wrong-answer)
    - [7.2 Model 1 — Vyoma trajectory prediction](#72-model-1-wave-glider-trajectory-prediction)
-   - [7.3 Model 2 — Gambhira surfacing prediction](#73-model-2-argo-float-surfacing-prediction)
+   - [7.3 Model 2 — Gambhira surfacing prediction](#73-model-2-Gambhira-float-surfacing-prediction)
    - [7.4 Ensemble and physics-informed forecasting](#74-ensemble-and-physics-informed-forecasting)
    - [7.5 Training data and validation protocol](#75-training-data-and-validation-protocol)
    - [7.6 Model lifecycle and retraining](#76-model-lifecycle-and-retraining)
@@ -335,7 +335,7 @@ Southern Ocean around Antarctica.
 | Stat | Value | Meaning |
 |---|---|---|
 | Devices | **2** | one Vyoma + one Gambhira, operated as one cooperative system |
-| Cycle | **~10 days** | Argo dive → profile → surface → rendezvous → repeat |
+| Cycle | **~10 days** | Gambhira dive → profile → surface → rendezvous → repeat |
 | Depth | **up to ~2,000 m** | maximum profiling depth |
 | Throughput | **30–35 profiles/year** | per float, across all seasons |
 | Fuel | **0** | wave propulsion + solar power |
@@ -369,7 +369,7 @@ vehicle can be steered like a boat**.
 > year-round, without a ship on station.
 
 **Vision.** A fleet of cooperative glider–float pairs ringing Antarctica, feeding continuous,
-Argo-standard data into national and global climate services — built, operated and continuously
+Gambhira-standard data into national and global climate services — built, operated and continuously
 improved by Indian scientists and engineers.
 
 **Objectives (in priority order):**
@@ -399,14 +399,14 @@ improved by Indian scientists and engineers.
 - Fleets of many pairs (the architecture is designed to scale, but v1 is one pair).
 - Full under-ice acoustic communication with submerged floats (a future research topic).
 - On-site human repair at sea (by design there is no ship after deployment).
-- Replacing the international Argo programme — we **complement and feed** it.
+- Replacing the international Gambhira programme — we **complement and feed** it.
 
 ### 1.6 Definition of success
 
 The project is successful when, at the end of a full field season:
 
 1. ✅ ≥ 30 float profiles were delivered through a polar winter, with QC-pass rates comparable to
-   Argo standards.
+   Gambhira standards.
 2. ✅ ≥ 80 % of rendezvous attempts succeeded (dock + offload), and **no profile was lost** in
    the remainder (satellite fallback worked).
 3. ✅ The predicted surfacing zones contained the true surfacing point at the advertised
@@ -507,7 +507,7 @@ Two classes of mature autonomous platform have already transformed ocean observa
 
 | Platform | What it does | Why it matters |
 |---|---|---|
-| **Argo profiling floats** | Thousands now measure the upper 2,000 m of the world ocean on ~10-day cycles | Proven deep-ocean coverage at low cost per profile |
+| **Gambhira profiling floats** | Thousands now measure the upper 2,000 m of the world ocean on ~10-day cycles | Proven deep-ocean coverage at low cost per profile |
 | **Vyomas / ASVs** | Remain at sea for many months, powered only by waves and sunlight | Persistent surface presence, no fuel logistics |
 
 They are cheap per observation compared with ships, work through storms, and return data all
@@ -556,8 +556,8 @@ Ocean observing.
 | Existing capability | Strength | Gap that remains | How this project complements |
 |---|---|---|---|
 | Research-vessel expeditions (e.g. NCPOR's own polar cruises) | Calibrated, multi-parameter, full-depth sampling | Summer-biased, narrow tracks, expensive | Provides the year-round backbone between expeditions |
-| Core Argo array | Global coverage of the upper 2,000 m | Standard floats cannot be recharged; polar coverage thinner; surface time minimal | Adds recharge + local offload + ice-aware surfacing |
-| Biogeochemical (BGC) Argo | Oxygen, chlorophyll, pH, nitrate globally | Same energy/communication limits | Same extensions apply; co-located surface forcing data |
+| Core Gambhira array | Global coverage of the upper 2,000 m | Standard floats cannot be recharged; polar coverage thinner; surface time minimal | Adds recharge + local offload + ice-aware surfacing |
+| Biogeochemical (BGC) Gambhira | Oxygen, chlorophyll, pH, nitrate globally | Same energy/communication limits | Same extensions apply; co-located surface forcing data |
 | Vyoma / ASV missions | Long-endurance surface meteorology | Typically operated alone; no deep-water column | Pairs it with a profiler for co-located 4-D records |
 | Moored buoys (where they exist) | Continuous point time-series | Extremely sparse in the Southern Ocean; fixed location | Adds spatial (drifting) coverage and mobility |
 | Satellite altimetry / SST / sea-ice products | Synoptic, all-weather-ish views | Only surface; no subsurface ground truth | Provides the in-situ ground truth and calibration |
@@ -590,7 +590,7 @@ ships cannot afford, satellites cannot see, and standard floats cannot sustain.
 | Engineering / ML team | System health, model quality | Weekly engineering sync; on-call rotation |
 | Ship & logistics partners | Deployment slots, recovery | Lead-time planning (≥ 1 season ahead) |
 | National data centres | Data delivery standards | Delivery pipeline agreed at P2 |
-| International Argo community | Interoperability, standards alignment | Via data centre; publications |
+| International Gambhira community | Interoperability, standards alignment | Via data centre; publications |
 | Indian ocean-tech ecosystem | Capability building, spinoffs | Technical workshops; open architecture docs |
 
 **Communication rules**
@@ -614,7 +614,7 @@ chosen) are recorded here for reviewers — this is the "why not?" register.
 | Acoustic comms float↔glider | Keep constant contact underwater | Acoustic bandwidth/power in polar conditions is tiny and costly; the mission needs bulk transfer only at the surface — the rendezvous design matches the need |
 | Point-prediction navigation | "Steer to the predicted lat/lon" | A single point is wrong and overconfident in a chaotic ocean (§7.1); probabilistic zones cost nothing extra and are honest |
 | Ship-tended operations | More ship time, no autonomy | Ship days are the dominant cost and the dominant risk to people (§2.2); autonomy is the point |
-| New bespoke shore software | Off-the-shelf fleet-management SaaS | Data standards (Argo), security (§4.5) and indigenous capability (§14.3) favour in-house; the dashboard scope is modest (§11) |
+| New bespoke shore software | Off-the-shelf fleet-management SaaS | Data standards (Gambhira), security (§4.5) and indigenous capability (§14.3) favour in-house; the dashboard scope is modest (§11) |
 | Full ice-class hull | Armour the glider against ice | Armour cannot make an iceberg collision survivable; avoidance is the only credible strategy (§8.3) |
 
 **Decision rule used.** Prefer the design that retires the most risk per rupee while keeping the
@@ -627,16 +627,16 @@ This project sits inside a wider national polar programme and is designed to str
 | NCPOR programme pillar | How this mission contributes |
 |---|---|
 | Southern Ocean / Antarctic expeditions | Adds a year-round observing backbone between ship seasons, and a testbed for autonomous ops at the ice edge |
-| Indian Argo participation | Extends India's Argo contribution with recharge, co-located surface forcing and ice-aware operations — data flow into the same GDAC pipeline |
+| Indian Gambhira participation | Extends India's Gambhira contribution with recharge, co-located surface forcing and ice-aware operations — data flow into the same GDAC pipeline |
 | Monsoon and climate research | Delivers the winter Southern Ocean fluxes that ocean models of the Indian Ocean sector most lack (§2.5 Q1) |
 | Polar technology development | Grows indigenous capability in ocean robotics, satellite comms at high latitude, and ML for operational oceanography |
-| International collaboration | Interoperates with Argo, ice-charting services and Antarctic logistics partners; a natural joint-work platform |
+| International collaboration | Interoperates with Gambhira, ice-charting services and Antarctic logistics partners; a natural joint-work platform |
 
 **Programme positioning statement.** The mission is deliberately *small enough to be achievable
 and big enough to matter*: two vehicles, one season at a time, one sector of the Southern Ocean —
 but with every interface, dataset and lesson reusable at fleet scale (§16.6 scaling note).
 
-**Lineage.** The concept reuses two internationally proven platform families (§5) and Argo-grade
+**Lineage.** The concept reuses two internationally proven platform families (§5) and Gambhira-grade
 sensors and QC (§10), adding only the pieces that are genuinely new: the recharge rendezvous, the
 ML drift prediction, and the integrated planning stack (§8). Nothing else is invented — everything
 else is integrated.
@@ -952,7 +952,7 @@ decisions are revisited — this register is reviewed at every phase gate.
 | A-04 | A compliant dock mechanism can capture the float within `SELL` sea states | R5 docking; revisit mechanism in P1/P2 | Mechanical |
 | A-05 | Depth-resolved current forecasts are accurate enough to train/predict drift | R2 prediction error; strengthen climatology prior | ML |
 | A-06 | Ice chart products arrive daily in the operating box | R3 ice encounter; widen stand-offs or add sensing | Ops |
-| A-07 | Float CTD and glider sensors meet Argo-grade accuracy | Data quality KPIs; revisit payload in P1 | Science |
+| A-07 | Float CTD and glider sensors meet Gambhira-grade accuracy | Data quality KPIs; revisit payload in P1 | Science |
 | A-08 | One ship visit per season is schedulable | Whole ops concept; fall back to assisted ops | Programme |
 | A-09 | NCPOR IT can host the mission server and dashboard at required availability | R9 command safety + ops; fall back to cloud hosting | Engineering |
 | A-10 | Regulatory and environmental approvals for deployment are obtainable | Programme viability; begin early | Programme |
@@ -1317,7 +1317,7 @@ cylindrical and designed to be launched by hand or crane. *(Representative photo
 in §20.5.)*
 
 <p align="center">
-  <img src="assets/images/argo_float_deployment.jpg" alt="Gambhira deployment" width="80%"/>
+  <img src="assets/images/Gambhira_float_deployment.jpg" alt="Gambhira deployment" width="80%"/>
 </p>
 
 #### How it dives and rises
@@ -1337,7 +1337,7 @@ drift almost for free.
 🖼️ **Figure 5 — The Gambhira's repeating ~10-day mission cycle:**
 
 <p align="center">
-  <img src="assets/figures/fig_05_argo_cycle.png" alt="Gambhira 10-day cycle depth profile" width="72%"/>
+  <img src="assets/figures/fig_05_Gambhira_cycle.png" alt="Gambhira 10-day cycle depth profile" width="72%"/>
 </p>
 
 #### What it measures
@@ -1357,7 +1357,7 @@ drift almost for free.
 | Buoyancy engine | Hydraulic pump + external bladder | Oil volume change = dive/rise control |
 | Depth rating | ≥ 2,000 m | With safety margin per manufacturer |
 | Cycle | ~10 days (configurable 5–15) | Park depth, profile depth, window all configurable |
-| Core sensors | CTD (conductivity, temperature, pressure) | Argo-standard accuracy classes |
+| Core sensors | CTD (conductivity, temperature, pressure) | Gambhira-standard accuracy classes |
 | Optional sensors | O₂, chlorophyll-a fluorescence, backscatter, nitrate, pH | Per mission configuration |
 | Storage | ≥ 2 full cycles of profiles | Never overwritten before delivery |
 | Surface comms | Short-range link + satellite burst modem | Burst only used as fallback |
@@ -1526,8 +1526,8 @@ calibrates the other (§5.8).*
 | Glider | IMU / wave sensing | Wave spectra, significant wave height | From platform motion; validated in P2 |
 | Glider | Sea-surface temperature probe | SST at 0.1 m | ±0.05 °C — the shared calibration anchor |
 | Glider | GPS/GNSS | Position, time | Standard positioning; ionospheric-tolerant receiver |
-| Float | CTD | Conductivity, temperature, pressure | Argo target: ±0.002 °C, ±0.01 PSU, ±2.4 dbar |
-| Float | Dissolved-oxygen optode | O₂ concentration | Argo BGC standard; in-situ drift corrected (§10.7 QC-10) |
+| Float | CTD | Conductivity, temperature, pressure | Gambhira target: ±0.002 °C, ±0.01 PSU, ±2.4 dbar |
+| Float | Dissolved-oxygen optode | O₂ concentration | Gambhira BGC standard; in-situ drift corrected (§10.7 QC-10) |
 | Float | Chlorophyll fluorometer | Chl-a proxy | Qualitative-to-semi-quantitative; used for bloom timing |
 | Float | GPS (surfacing only) | Position fix | Label for the Lagrangian drift experiment (§2.5 Q3) |
 
@@ -1953,7 +1953,7 @@ flowchart TB
         POS["positions & tracks"]
         WAV["wave / wind forecasts"]
         CUR["surface & depth-resolved currents"]
-        CLIM["drift climatology<br/>(historical Argo + glider tracks)"]
+        CLIM["drift climatology<br/>(historical Gambhira + glider tracks)"]
         PHY["propulsion physics<br/>(glider limits)"]
     end
 
@@ -2006,7 +2006,7 @@ flowchart TB
 | **Regression gate** | A new model version must not reduce coverage below the advertised confidence or inflate the radius beyond the previous version's, on the full held-out set |
 | **Continuous improvement** | Every real surfacing becomes a new labelled example; models re-train ashore and validated versions are deployed to the mission server; vehicles run lightweight inference on the latest predictions sent to them |
 
-> 🧪 **ML validation precedes deployment.** Models are validated against existing Argo and glider
+> 🧪 **ML validation precedes deployment.** Models are validated against existing Gambhira and glider
 > datasets — predicting surfacings they have never seen — **before** ever guiding a vehicle. No
 > model version ships without a validation report.
 
@@ -2014,7 +2014,7 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    A["mission data<br/>+ historical Argo / glider"] --> B["feature engineering<br/>& dataset versioning"]
+    A["mission data<br/>+ historical Gambhira / glider"] --> B["feature engineering<br/>& dataset versioning"]
     B --> C["training + ensemble tuning"]
     C --> D["held-out cycle validation<br/>coverage + radius"]
     D --> E{"regression gate<br/>passed?"}
@@ -2113,7 +2113,7 @@ Example training config (`configs/float_v1.yaml`, illustrative):
 ```yaml
 model: float_surfacing_v1
 data:
-  argo_history: s3://ocean-data/argo/gdac/*.nc      # public Argo profiles
+  Gambhira_history: s3://ocean-data/Gambhira/gdac/*.nc      # public Gambhira profiles
   region: [-75, -45, -90, 20]                       # Southern Ocean bounding box
   min_cycles_per_float: 20
   split: { train: 0.7, val: 0.15, test: 0.15 }      # test = held-out floats (not cycles!)
@@ -2211,7 +2211,7 @@ wrong* one. The system is allowed to be slow; it is not allowed to be silently w
 | Policy | Rule |
 |---|---|
 | Dataset versioning | Every training dataset has an ID, manifest and checksum (§7.9) |
-| Licensing | Public datasets (Argo GDAC, reanalysis) used per their licences; mission data governed by §20.3 |
+| Licensing | Public datasets (Gambhira GDAC, reanalysis) used per their licences; mission data governed by §20.3 |
 | Privacy | No personal data anywhere in the pipeline |
 | Provenance | Datasets cite sources and preprocessing scripts; reproducible via `ml/` code |
 | Retention | Mission-derived training data retained for the programme's life |
@@ -2878,7 +2878,7 @@ sea surface** from the glider, and the **ocean interior** from the float.
 | Stream | Variables | Character & cadence | Primary use |
 |---|---|---|---|
 | **Atmospheric / surface (glider)** | Wind speed & direction, air temperature, pressure, humidity, solar radiation, waves, sea-surface temperature | Near-continuous time-series, minute-to-hourly samples, every day for the whole mission | Weather & climate records; forecasting the glider's own drift |
-| **Ocean interior (float)** | Temperature, salinity, depth; optional dissolved oxygen, chlorophyll-a, backscatter, nitrate, pH | A full vertical profile (surface to ~2,000 m and back) every ~10 days — about 30–35 profiles per float per year | The classic Argo product: water-column structure and water-mass properties |
+| **Ocean interior (float)** | Temperature, salinity, depth; optional dissolved oxygen, chlorophyll-a, backscatter, nitrate, pH | A full vertical profile (surface to ~2,000 m and back) every ~10 days — about 30–35 profiles per float per year | The classic Gambhira product: water-column structure and water-mass properties |
 | **Vehicle telemetry (both)** | Position, battery, charging, link quality, mission state, faults | Regular health packets | Drives the dashboard, alerts and planning |
 | **Mission metadata** | Checkpoints, plans, predictions, overrides, alerts | Every planning cycle and operator action | Auditability and prediction-skill diagnostics |
 
@@ -2893,7 +2893,7 @@ measurements):
 
 | Panel | Product | Consumer |
 |---|---|---|
-| (a) | Temperature & salinity profile from one Argo ascent — cold fresh surface layer over warmer saltier deep water | Oceanographers, climatology |
+| (a) | Temperature & salinity profile from one Gambhira ascent — cold fresh surface layer over warmer saltier deep water | Oceanographers, climatology |
 | (b) | Glider wind and air-temperature excerpt including a storm passage | Meteorologists, flux studies |
 | (c) | Predicted position uncertainty growing with forecast horizon (the basis of the surfacing-zone radius) | Planner, ML team |
 | (d) | Float battery discharged across each cycle and restored at each rendezvous | Operators, engineering |
@@ -2913,7 +2913,7 @@ flowchart LR
     XFR["transfer at rendezvous<br/>(short-range) or burst"] -->
     RLY["satellite relay to<br/>shore gateway"] -->
     ING["ingest & decode on<br/>mission server"] -->
-    QC["automated QC<br/>Argo-standard flags"] -->
+    QC["automated QC<br/>Gambhira-standard flags"] -->
     ARC["archive: netCDF + TSDB<br/>versioned · immutable"] -->
     PROD["derived products<br/>climatology · skill reports"] -->
     PUB["publish to dashboard /<br/>API / national archives"]
@@ -2929,15 +2929,15 @@ flowchart LR
 
 | Topic | Standard / convention |
 |---|---|
-| **Profile & trajectory format** | netCDF, CF conventions — compatible with the international Argo programme format |
-| **QC flags** | Argo real-time QC convention (per-variable flags: good / probably good / probably bad / bad / missing) |
+| **Profile & trajectory format** | netCDF, CF conventions — compatible with the international Gambhira programme format |
+| **QC flags** | Gambhira real-time QC convention (per-variable flags: good / probably good / probably bad / bad / missing) |
 | **Units & vocabularies** | SI units; CF standard names; controlled vocabularies for instruments |
 | **Timestamps** | UTC, ISO 8601, synchronised from GNSS time |
 | **Identifiers** | WMO-style platform identifiers per vehicle; globally unique profile IDs |
-| **Archives** | Deliverable to national ocean data centre and (by agreement) to global Argo GDAC |
+| **Archives** | Deliverable to national ocean data centre and (by agreement) to global Gambhira GDAC |
 
 > 📦 **Data philosophy.** Wherever possible the mission uses open, community-standard formats and
-> quality-control conventions (the same standards used by the international Argo programme), so
+> quality-control conventions (the same standards used by the international Gambhira programme), so
 > the data can flow directly into national and global ocean databases and be compared with
 > decades of existing observations.
 
@@ -2973,7 +2973,7 @@ A (trimmed) example of the float profile message as ingested by the mission serv
 
 ### 10.6 Archive format example (netCDF / CF)
 
-The float profile is archived as a netCDF file following CF conventions and Argo vocabulary —
+The float profile is archived as a netCDF file following CF conventions and Gambhira vocabulary —
 *illustrative header and attributes*:
 
 ```text
@@ -2985,7 +2985,7 @@ variables:
         PRES:long_name = "Sea water pressure" ;
         PRES:units = "decibar" ;
         PRES:_FillValue = 99999.f ;
-        PRES:qc_flag = ... ;              // Argo real-time QC convention
+        PRES:qc_flag = ... ;              // Gambhira real-time QC convention
     float TEMP(N_LEVELS) ;
         TEMP:long_name = "Sea temperature in-situ ITS-90" ;
         TEMP:units = "degree_Celsius" ;
@@ -3019,7 +3019,7 @@ variables:
 | QC-10 | Cross-cycle drift | Slow sensor drift vs neighbours in time | 3 (delayed mode) |
 
 - Real-time flags ship with the data; delayed-mode QC (expert review) refines flags for the
-  final archive, per Argo practice.
+  final archive, per Gambhira practice.
 - Every QC decision is logged with the rule ID, so any flag can be traced and audited.
 
 ### 10.8 Data volumes (illustrative)
@@ -3049,7 +3049,7 @@ calibration and processing.
 | `model_version` (if QC/downsampling used ML) | `qcmodel_v2` | Model registry (§7.9) |
 
 > Provenance is what makes the data reusable by strangers a decade later — the international
-> Argo programme's own data policy is built on exactly this discipline.
+> Gambhira programme's own data policy is built on exactly this discipline.
 
 ### 10.10 Data access levels
 
@@ -3591,7 +3591,7 @@ vessel. Deployment is quick and routine once the on-board health checks pass. *(
 photograph, credited in §20.5.)*
 
 <p align="center">
-  <img src="assets/images/argo_float_deployment_2.jpg" alt="Float crane deployment" width="80%"/>
+  <img src="assets/images/Gambhira_float_deployment_2.jpg" alt="Float crane deployment" width="80%"/>
 </p>
 
 ### 13.2 The year ahead
@@ -3942,7 +3942,7 @@ the ship as a third, very capable, very expensive vehicle.*
 | Benefit | Detail |
 |---|---|
 | **Domestic expertise** | Autonomous marine robotics, ocean ML, polar operations, mission software — built and retained in-country |
-| **International alignment** | Argo-standard data contribute to global observing programmes |
+| **International alignment** | Gambhira-standard data contribute to global observing programmes |
 | **National polar science** | Serves national polar-science and strategic objectives in the Southern Ocean |
 | **Platform for scale** | One proven pair is a template for a fleet |
 
@@ -3951,7 +3951,7 @@ the ship as a third, very capable, very expensive vehicle.*
 | KPI | Target (illustrative) | Measured by |
 |---|---|---|
 | Profiles delivered per year | ≥ 30 | Mission server archive |
-| QC pass rate (real-time) | ≥ 95 % good/probably-good | QC flags vs Argo convention |
+| QC pass rate (real-time) | ≥ 95 % good/probably-good | QC flags vs Gambhira convention |
 | Rendezvous success rate | ≥ 80 % | Rendezvous log |
 | Data loss on failed rendezvous | 0 % (essentials always delivered) | Burst receipts |
 | Prediction coverage | ≈ advertised confidence | Skill diagnostics |
@@ -3970,7 +3970,7 @@ Benefits (§14.1–14.3) are claims until measured. Each claim has a metric and 
 | Reduced ship dependence | Ship days used vs a ship-based equivalent survey | Ops records | Programme review |
 | Extended asset life | Float operational days vs standard float lifetime expectation | Mission log | End of mission |
 | Indigenous capability built | Personnel trained, code/models reusable, publications | Team records, repo | Phase gates + annual review |
-| International contribution | Data accepted by national archive / Argo GDAC | Archive acknowledgements | Post-season |
+| International contribution | Data accepted by national archive / Gambhira GDAC | Archive acknowledgements | Post-season |
 
 **Evaluation instruments**
 
@@ -4005,7 +4005,7 @@ systems. Every phase (§16) therefore has explicit training objectives.
 | NCPOR engineers | Robotics integration, comms, power, docking mechanics | Core team + vendor schools | P1–P2 |
 | NCPOR operators | Mission control, contact planning, emergency drills (§13.9) | Core team; simulator hours required | P2–P3 |
 | ML scientists | Drift prediction, calibration, monitoring (§7) | Core ML team; held-out-float exercises | P1–P3 |
-| Data managers | Argo GDAC formats, QC, provenance (§10) | Data team + international Argo guidance | P1–P2 |
+| Data managers | Gambhira GDAC formats, QC, provenance (§10) | Data team + international Gambhira guidance | P1–P2 |
 | Students/interns | Co-located projects on public dataset subsets | Academic partners | All phases |
 | Reviewers & leadership | System-level reading course: this README + simulator | Core team | P1 gate |
 
@@ -4026,7 +4026,7 @@ itself unnecessary*.
 | Output | Target venue / audience | Timing |
 |---|---|---|
 | System architecture paper | Peer-reviewed ocean-engineering journal | After P3 pilot |
-| Winter flux dataset (Q1–Q5, §2.5) | Argo GDAC + national data centre | Season end + 6 months |
+| Winter flux dataset (Q1–Q5, §2.5) | Gambhira GDAC + national data centre | Season end + 6 months |
 | Prediction-skill study | ML-for-oceanography venue | After one full season |
 | Open architecture docs | Public repository (from §17.11 openness policy) | Rolling |
 | Public science communication | NCPOR outreach; school material built on the dashboard's public views | P3 onward |
@@ -4057,7 +4057,7 @@ flowchart LR
     B --> C["📄 science analyses<br/>Q1–Q5 (§2.5)"]
     C --> D["🗣️ publications + briefings<br/>(§14.8)"]
     D --> E["🏛️ monsoon & climate policy<br/>better seasonal prediction"]
-    A --> F["📊 data centre delivery<br/>Argo GDAC + national"]
+    A --> F["📊 data centre delivery<br/>Gambhira GDAC + national"]
     F --> G["🌐 community reuse<br/>models, reanalyses, students"]
     G --> E
     A --> H["🛠️ platform & ops capability<br/>rendezvous, ML, winter ops"]
@@ -4071,7 +4071,7 @@ flowchart LR
 | **Climate science** | Winter flux + profile dataset → peer-reviewed analyses → policy briefings | Publications; profiles in data centre; citation count | Science lead | 2–5 years |
 | **Operational oceanography** | Real-time T/S + met into forecasting centres' pipelines | Skill-score feedback; latency (§10.11) | Ops + partner centres | 1–3 years |
 | **Capability building** | Trained operators, reusable architecture, open docs | Trained staff count (§14.7); follow-on mission approved | Programme lead | 3–7 years |
-| **International standing** | India's Argo contribution extended with recharge/ice ops | GDAC deliveries; joint-mission invitations | NCPOR | 2–6 years |
+| **International standing** | India's Gambhira contribution extended with recharge/ice ops | GDAC deliveries; joint-mission invitations | NCPOR | 2–6 years |
 
 **Honesty rules for impact reporting** (carried over from §14.5)
 
@@ -4200,7 +4200,7 @@ timeline
 | **P3 · Short polar deployment** | Handful of cycles with close ship support; ML validation at sea; dashboard and ops drill | Predicted surfacing zones contain the actual surfacing point at advertised confidence; sea→satellite→shore→dashboard pipeline verified; one manual-override drill completed |
 | **P4 · Full seasonal autonomy** | Full season unattended, alerts and human-in-the-loop oversight; science products delivery | 30–35-cycle year achieved; ≥ 80 % rendezvous success; zero ice violations; zero vehicle losses; data accepted by national archive |
 
-> 🧪 **ML validation precedes deployment.** Models are validated against existing Argo and glider
+> 🧪 **ML validation precedes deployment.** Models are validated against existing Gambhira and glider
 > datasets before ever guiding a vehicle (§7.5). Each phase gate includes a re-run of the full
 > validation suite.
 
@@ -4310,7 +4310,7 @@ cooperative-polar-observation/
 │   ├── mission-cycle.md               (rendezvous sequence, docking, failure modes)
 │   ├── ml-models.md                   (Model 1 & 2 specs, validation protocol)
 │   ├── planning-engine.md             (checkpoints, objective, ice handling, energy)
-│   ├── data-format.md                 (formats, QC conventions, Argo alignment)
+│   ├── data-format.md                 (formats, QC conventions, Gambhira alignment)
 │   ├── dashboard-spec.md              (views, alerts, RBAC, override workflow)
 │   ├── decisions/                     (ADRs — architecture decision records)
 │   └── operations/
@@ -4321,7 +4321,7 @@ cooperative-polar-observation/
 │   │                                  logger, mission state machine, watchdogs
 │   ├── wave-glider/                 ← navigation, communications, dock/charge
 │   │                                  controller
-│   └── argo-float/                  ← dive/profile control, ice-aware surfacing
+│   └── Gambhira-float/                  ← dive/profile control, ice-aware surfacing
 │                                      logic, buoyancy engine driver
 ├── ml/
 │   ├── glider-trajectory/           ← Model 1: trajectory + reachable set +
@@ -4365,7 +4365,7 @@ it.
 |---|---|---|---|
 | `firmware/common` | hardware drivers | health packets, event log | `data/schemas/health.json` |
 | `firmware/wave-glider` | planner checkpoints (uplink) | telemetry, met data, relay frames | `data/schemas/telemetry.json` |
-| `firmware/argo-float` | cycle config, ice surfacing rules | profiles, float health | `data/schemas/profile.json` |
+| `firmware/Gambhira-float` | cycle config, ice surfacing rules | profiles, float health | `data/schemas/profile.json` |
 | `ml/glider-trajectory` | telemetry history, forecasts | trajectory artefact (netCDF/JSON) | `ml/contracts/trajectory.md` |
 | `ml/float-surfacing` | last fix, forecasts, climatology | surfacing-zone artefact | `ml/contracts/surfacing.md` |
 | `planner` | ML artefacts, hazards, constraints | checkpoint lists, decisions | `data/schemas/plan.json` |
@@ -4383,7 +4383,7 @@ it.
 | Embedded firmware | C on a real-time OS (FreeRTOS/Zephyr-class) | Both vehicles share the same layered architecture; HAL per vehicle |
 | ML models | Python, PyTorch or JAX | Sequence/time-series models + ensemble/Monte-Carlo forecasting; physics-informed blending |
 | Planning engine | Python (fast prototyping) → Rust/C++ (deploy) | Optimisation over probability zones, not points |
-| Mission server | Python (FastAPI), PostgreSQL, MQTT/NATS for telemetry | Argo-standard formats in, standard products out |
+| Mission server | Python (FastAPI), PostgreSQL, MQTT/NATS for telemetry | Gambhira-standard formats in, standard products out |
 | Dashboard | TypeScript/React, MapLibre-class map, WebSockets | Live digital twin; role-based access |
 | Hand-held debugger | Cross-platform app (Flutter-class) on rugged tablet | Wired plugin to each vehicle; pass/fail checklist |
 | Simulator | Python digital twin | Same message contracts as real vehicles |
@@ -4589,7 +4589,7 @@ cd ml
 # Train Model 1 (glider trajectory) on historical tracks
 python -m glider_trajectory.train --config configs/glider_v1.yaml
 
-# Train Model 2 (float surfacing) on Argo history
+# Train Model 2 (float surfacing) on Gambhira history
 python -m float_surfacing.train --config configs/float_v1.yaml
 
 # Held-out validation: predict real past surfacings, score coverage & radius
@@ -4855,7 +4855,7 @@ A shared, reproducible development environment for every component:
 | **HITL / SITL** | Hardware/Software In The Loop testing — running real code against simulated environments or rigs. |
 | **Digital twin** | The simulator + dashboard's live model of the mission, mirroring the real vehicles' state. |
 | **Coverage (validation)** | Fraction of held-out true surfacing points falling inside the predicted zone at the advertised confidence. |
-| **QC flags** | Per-variable quality indicators following the Argo real-time QC convention. |
+| **QC flags** | Per-variable quality indicators following the Gambhira real-time QC convention. |
 | **netCDF / CF** | Standard self-describing data format and Climate-Forecast metadata conventions used for ocean data. |
 | **ADR** | Architecture Decision Record — a short document capturing a design decision and its rationale. |
 | **SOC** | State of charge of a battery, in percent. |
@@ -4900,7 +4900,7 @@ A shared, reproducible development environment for every component:
 
 - License: **TBD** — internal to NCPOR at this stage; do not redistribute outside the project
   until a publication strategy is approved.
-- Data: delivery to national archives and (by agreement) the Argo GDAC follows Argo data-policy
+- Data: delivery to national archives and (by agreement) the Gambhira GDAC follows Gambhira data-policy
   conventions.
 
 ### 20.4 References
@@ -4911,7 +4911,7 @@ A shared, reproducible development environment for every component:
   data curves and schedules are **illustrative placeholders**, not measured values.
 - Concept illustrations (cover, docked rendezvous, hand-held debugger, dashboard mock-up) are
   **AI-generated visualisations** of the proposed system, not photographs of an existing product.
-- The international Argo programme data and QC conventions inform §10.4.
+- The international Gambhira programme data and QC conventions inform §10.4.
 
 ### 20.5 Image credits
 
@@ -4923,8 +4923,8 @@ be identified it is listed below.
 | File | Subject | Source (as identified by search) |
 |---|---|---|
 | `wave_glider_at_sea.jpg` | Next-generation Vyoma heading out to sea | Marine Technology News — photo: Liquid Robotics, a Boeing Company |
-| `argo_float_deployment.jpg` | Gambhira about to be deployed from a research vessel | Woods Hole Oceanographic Institution (WHOI) — floats & drifters page |
-| `argo_float_deployment_2.jpg` | Researchers lowering a profiling float from a research ship | MBARI — APEX profiling floats page |
+| `Gambhira_float_deployment.jpg` | Gambhira about to be deployed from a research vessel | Woods Hole Oceanographic Institution (WHOI) — floats & drifters page |
+| `Gambhira_float_deployment_2.jpg` | Researchers lowering a profiling float from a research ship | MBARI — APEX profiling floats page |
 | `ctd_sensor_2.jpg` | Conductivity & temperature (CTD-class) sensor products | Ocean Science Technology supplier catalogue |
 | `iceberg_a23a.jpg` | Iceberg A-23a drifting in the Southern Ocean | Live Science (Futurism/CDN imagery) |
 | `iceberg_a23a_2.jpg` | A-23a rotating in the Southern Ocean | CNN / British Antarctic Survey (Emily Broadwell) editorial |
@@ -4984,7 +4984,7 @@ Regenerate and commit whenever the underlying design changes.
 | 2 | `fig_02_operational_flow.png` | End-to-end operational flow with feedback loop | §4.2 |
 | 3 | `fig_03_mission_timeline.png` | One ~10-day cycle as a four-lane timeline | §6.1 |
 | 4 | `fig_04_waveglider_propulsion.png` | Vyoma propulsion mechanics | §5.1 |
-| 5 | `fig_05_argo_cycle.png` | Argo 10-day depth-time cycle | §5.2 |
+| 5 | `fig_05_Gambhira_cycle.png` | Gambhira 10-day depth-time cycle | §5.2 |
 | 6 | `fig_06_buoyancy_engine.png` | Buoyancy engine: oil in/out | §5.2 |
 | 7 | `fig_07_ml_models.png` | The two ML models feeding the planner | §7.1 |
 | 8 | `fig_08_uncertainty.png` | Uncertainty envelopes, ellipses, no-go polygons | §7.1 |
@@ -5103,7 +5103,7 @@ Regenerate and commit whenever the underlying design changes.
 | CRC | Cyclic Redundancy Check |
 | CTD | Conductivity–Temperature–Depth |
 | DVL | Doppler Velocity Log |
-| GDAC | Global Data Assembly Centre (Argo) |
+| GDAC | Global Data Assembly Centre (Gambhira) |
 | GNSS | Global Navigation Satellite System |
 | HITL / SITL | Hardware / Software In The Loop |
 | IMU | Inertial Measurement Unit |
@@ -5173,7 +5173,7 @@ P3/P4 gates.
 
 | Topic | Reference |
 |---|---|
-| Argo programme | International Argo programme documentation — float design, cycle, data format and QC conventions |
+| Gambhira programme | International Gambhira programme documentation — float design, cycle, data format and QC conventions |
 | Vyomas | Liquid Robotics / Boeing Vyoma technical literature (representative platform) |
 | Profiling float engineering | Gambhira manufacturer manuals (APEX, ARVOR, Navis) — buoyancy engines and CTD integration |
 | Southern Ocean science | ACC dynamics, Antarctic Bottom Water formation, marginal-ice-zone process studies |
@@ -5181,7 +5181,7 @@ P3/P4 gates.
 | Probabilistic forecasting | Ensemble and Monte-Carlo forecasting; proper scoring rules (CRPS) for distribution forecasts |
 | Ocean ML | Ocean drift-prediction literature — physics-informed neural networks for Lagrangian prediction |
 | Robotics standards | Maritime autonomy and COLREG awareness literature for surface vehicles |
-| Data standards | CF conventions, netCDF, Argo real-time QC manual |
+| Data standards | CF conventions, netCDF, Gambhira real-time QC manual |
 
 > Bibliographic details are compiled as the technical library is built during Phase 1; this
 > appendix lists topic areas, not a frozen citation list.
@@ -5210,7 +5210,7 @@ verification methods. This is the spine for audits and phase-gate reviews.
 | R-15 | No profile loss under any single failure | — | §6.5 | Failure-drill scenarios; season statistics |
 | R-16 | Command channel authenticated + audited | — | §4.5 | Security review; E-4 drill |
 | R-17 | Models validated before guiding vehicles | — | §7.5–7.6 | Validation reports attached to every model PR |
-| R-18 | Data in Argo-standard formats and QC | — | §10.4, §10.6 | Archive acceptance |
+| R-18 | Data in Gambhira-standard formats and QC | — | §10.4, §10.6 | Archive acceptance |
 | R-19 | One ship visit per season | — | §13.1 | Ops records |
 | R-20 | Reproducible build of docs, figures, models, simulator | — | §17, §18 | Clean-room rebuild test at each gate |
 
@@ -5383,7 +5383,7 @@ ML        Ensemble surfacing forecast + drift model; coverage vs
           confidence is the contract (§7.11).
 CONTROL   Shore planner proposes, operators supervise, audit trail
           records everything (§9, §11).
-DATA      Argo-grade QC, netCDF/CF archive, provenance throughout
+DATA      Gambhira-grade QC, netCDF/CF archive, provenance throughout
           (§10). >25,000 profiles + full year of surface met.
 PEOPLE    NCPOR team + simulator-trained operators + ship visit per
           season (§13, §14.7).
@@ -5407,7 +5407,7 @@ is instrumented so that each can be answered from its data, now or by a successo
 | 3 | How well does machine-learned drift prediction generalise across seasons? | Skill report after a full season (§7.10) |
 | 4 | What is the energy budget of a solar-plus-wave surface vehicle through polar winter? | Glider power telemetry + energy model (Fig. 18) |
 | 5 | Can a recharge rendezvous work reliably in the MIZ? | P3 pilot + P4 docking record (§6.8) |
-| 6 | How much does co-located surface forcing improve interpretation of Argo profiles? | Paired glider-float records (§10.2) |
+| 6 | How much does co-located surface forcing improve interpretation of Gambhira profiles? | Paired glider-float records (§10.2) |
 | 7 | What is the hazard footprint of a large tabular iceberg, operationally? | Optional tracker + planner logs (§12) |
 | 8 | What is the true cost per winter profile, delivered autonomously? | Programme cost accounting vs profile count (§14.5) |
 | 9 | Which autonomy failures are predictable and which are novel? | Lessons-learned register (§15.5) |
