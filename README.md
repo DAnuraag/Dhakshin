@@ -1236,7 +1236,7 @@ at a time without fuel. *(Representative photograph, credited in §20.5.)*
 🖼️ **Figure 4 — How the Vyoma moves, and why it needs no fuel:**
 
 <p align="center">
-  <img src="assets/figures/fig_04_waveglider_propulsion.png" alt="Vyoma propulsion mechanics" width="80%"/>
+  <img src="assets/figures/fig_04_Vyoma_propulsion.png" alt="Vyoma propulsion mechanics" width="80%"/>
 </p>
 
 #### What it carries and does
@@ -4983,7 +4983,7 @@ Regenerate and commit whenever the underlying design changes.
 | 1 | `fig_01_system_architecture.png` | System architecture — sea / satellite / shore tiers | §4.1 |
 | 2 | `fig_02_operational_flow.png` | End-to-end operational flow with feedback loop | §4.2 |
 | 3 | `fig_03_mission_timeline.png` | One ~10-day cycle as a four-lane timeline | §6.1 |
-| 4 | `fig_04_waveglider_propulsion.png` | Vyoma propulsion mechanics | §5.1 |
+| 4 | `fig_04_Vyoma_propulsion.png` | Vyoma propulsion mechanics | §5.1 |
 | 5 | `fig_05_Gambhira_cycle.png` | Gambhira 10-day depth-time cycle | §5.2 |
 | 6 | `fig_06_buoyancy_engine.png` | Buoyancy engine: oil in/out | §5.2 |
 | 7 | `fig_07_ml_models.png` | The two ML models feeding the planner | §7.1 |
